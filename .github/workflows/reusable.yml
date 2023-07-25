@@ -11,3 +11,5 @@ jobs:
         run: |
           echo I am from reusable;
           cat /etc/os*
+          ls -lah
+          cat build*
