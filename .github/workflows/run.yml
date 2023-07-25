@@ -4,4 +4,4 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    uses: Mr-Beast77Lab/testingatemprepowhichwillcontrolallbuilds/.github/workflows/reusable.yml@main
+    uses: Mr-Beast77Lab/testingatemprepowhichwillcontrolallbuilds/.github/workflows/reusable.yml@cf798108266026c69e91c2ef16580f182e8aefbd
