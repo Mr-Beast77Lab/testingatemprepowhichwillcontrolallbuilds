@@ -61,13 +61,11 @@ jobs:
     steps:
     # actions/checkout MUST come before auth
     - uses: 'actions/checkout@v3'
-
-    - id: 'auth'
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v1'
+    - name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0.4.0'
       with:
-        workload_identity_provider: 'projects/792137784024/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-        service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
+        workload_identity_provider: 'projects/792137784024/locations/global/workloadIdentityPools/my-identity-pool/providers/my-provider'
+        service_account: 'github-actions@peaceful-access-393405.iam.gserviceaccount.com'
 
     # ... further steps are automatically authenticated
     - name: run gcloud
