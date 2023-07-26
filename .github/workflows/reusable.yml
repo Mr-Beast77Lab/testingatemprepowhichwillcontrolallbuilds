@@ -71,4 +71,4 @@ jobs:
 
     # ... further steps are automatically authenticated
     - name: run gcloud
-      run: gcloud info
+      run: gcloud compute instances stop e2micro --zone=us-central1-c
