@@ -2,6 +2,7 @@ name: reusable
 on:
   workflow_call:
   workflow_dispatch:
+  push:
 jobs:
   build:
     if: false
@@ -28,7 +29,7 @@ jobs:
           cat build*
 
   gcp:
-    if: true
+    if: false
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
@@ -51,7 +52,23 @@ jobs:
   
   gcp2:
     runs-on: ubuntu-latest
+
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     steps:
-     - name: 'gcloud'
-       run: |-
-        gcloud info
+    # actions/checkout MUST come before auth
+    - uses: 'actions/checkout@v3'
+
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: 'projects/792137784024/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+        service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
+
+    # ... further steps are automatically authenticated
+    - name: run gcloud
+      run: gcloud info
