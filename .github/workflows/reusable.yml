@@ -28,7 +28,7 @@ jobs:
           cat build*
 
   gcp:
-    if: false
+    if: true
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
