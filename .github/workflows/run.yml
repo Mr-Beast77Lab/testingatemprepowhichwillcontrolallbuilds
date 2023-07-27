@@ -2,6 +2,7 @@ name: run
 on:
   push:
   workflow_dispatch:
+  pull_request:
 jobs:
   build:
-    uses: Mr-Beast77Lab/testingatemprepowhichwillcontrolallbuilds/.github/workflows/reusable.yml@cf798108266026c69e91c2ef16580f182e8aefbd
+    uses: Mr-Beast77Lab/testingatemprepowhichwillcontrolallbuilds/.github/workflows/reusable.yml@main
